@@ -1,0 +1,14 @@
+{
+    "name": "lynncho/aliyun-log-gather-write",
+    "description": "Ali cloud log gather write.",
+    "license": "MIT",
+    "require": {
+        "psr/log": "^1.1",
+        "aliyunlog/aliyun-log-php-sdk": "^0.6.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lynncho\\Aliyunlog\\GatherWrite\\": "src/"
+        }
+    }
+}
