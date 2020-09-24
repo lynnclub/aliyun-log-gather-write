@@ -3,6 +3,7 @@
     "description": "Ali cloud log gather write.",
     "license": "MIT",
     "require": {
+        "ext-json": "*",
         "psr/log": "^1.1",
         "aliyunlog/aliyun-log-php-sdk": "^0.6.1"
     },

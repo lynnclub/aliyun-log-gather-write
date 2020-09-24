@@ -12,18 +12,19 @@
 
 ### 使用方式
 
-安装工具包
+#### 安装工具包
 
 ```bash
 composer require lynncho/aliyun-log-gather-write
 ```
 
-代码示例
+#### 代码示例
+
+日志实例初始化
 
 ```php
 use Lynncho\Aliyunlog\GatherWrite\Logger;
 use Lynncho\Aliyunlog\GatherWrite\LoggerSingle;
-use Psr\Log\LogLevel;
 
 $config = [
     'endPoint' => '',
@@ -34,19 +35,44 @@ $config = [
 ];
 
 $logger = new Logger($config);
-$logger->log(LogLevel::DEBUG, 'log info', ['log info' => ['test']]);
-$logger->info('info', ['info' => ['test']]);
 
-$logger->error('error', ['info' => ['error']]);
-$logger->additionFields(['TestField' => 123]);
+//或者，使用静态单例初始化日志实例
+LoggerSingle::init($config);
 
+//或者，使用静态单例嵌套日志实例
 LoggerSingle::setLogger($logger);
-LoggerSingle::info('LoggerSingle info', ['info' => ['test']]);
+```
 
+使用PSR日志标准方法填写日志
+
+```php
+use Psr\Log\LogLevel;
+
+$logger->log(LogLevel::DEBUG, 'log info', ['log info' => ['test']]);
+$logger->info('hello world', ['info' => ['test']]);
+$logger->error('has error', ['info' => ['error']]);
+
+//静态单例方法，效果一致
+LoggerSingle::info('LoggerSingle info', ['info' => ['test']]);
+LoggerSingle::error('LoggerSingle error', ['info' => ['test']]);
+```
+
+自定义单条日志字段
+
+```php
+//日志默认拥有Message、Level、Date、Content字段，可对最新一条日志追加自定义字段。自定义字段优先。
+$logger->addLogItemFields(['TestField' => 123]);
+
+//自定义一条新日志
+$logger->addLogItemFields(['NewLogTestField' => 1234], true);
+```
+
+推送日志
+
+```php
 $logger->push();
 
-LoggerSingle::init($config);
-LoggerSingle::error('LoggerSingle error', ['info' => ['test']]);
+//或者，使用静态单例推送
 LoggerSingle::push();
 ```
 

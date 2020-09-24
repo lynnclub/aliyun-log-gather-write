@@ -63,13 +63,20 @@ class Logger extends AbstractLogger implements LoggerInterface
     }
 
     /**
-     * Add addition fields to Log Item
+     * Add fields to Log Item
      *
      * @param array $fields
+     * @param bool $newLogItem
      */
-    public function additionFields(array $fields)
+    public function addLogItemFields(array $fields, $newLogItem = false)
     {
-        $logItem = end($this->logItems);
+        if ($newLogItem) {
+            $this->logItems[] = $this->logItem = new \Aliyun_Log_Models_LogItem;
+
+            $logItem = &$this->logItem;
+        } else {
+            $logItem = \end($this->logItems);
+        }
 
         foreach ($fields as $key => $field) {
             $logItem->pushBack($key, $field);

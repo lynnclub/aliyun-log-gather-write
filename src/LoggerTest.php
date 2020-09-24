@@ -19,7 +19,9 @@ $logger->log(LogLevel::DEBUG, 'log info', ['log info' => ['test']]);
 $logger->info('info', ['info' => ['test']]);
 
 $logger->error('error', ['info' => ['error']]);
-$logger->additionFields(['TestField' => 123]);
+$logger->addLogItemFields(['TestField' => 123]);
+
+$logger->addLogItemFields(['NewLogTestField' => 1234], true);
 
 LoggerSingle::setLogger($logger);
 LoggerSingle::info('LoggerSingle info', ['info' => ['test']]);

@@ -5,11 +5,12 @@ namespace Lynncho\Aliyunlog\GatherWrite;
 interface LoggerInterface
 {
     /**
-     * Add addition fields to Log Item
+     * Add fields to Log Item
      *
      * @param array $fields
+     * @param bool $newLogItem
      */
-    public function additionFields(array $fields);
+    public function addLogItemFields(array $fields, $newLogItem = false);
 
     /**
      * Push logs
