@@ -15,7 +15,7 @@
 安装工具包
 
 ```bash
-composer require lynncho/aliyunlog-gather-write
+composer require lynncho/aliyun-log-gather-write
 ```
 
 代码示例
