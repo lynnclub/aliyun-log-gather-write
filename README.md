@@ -23,7 +23,7 @@ composer require lynncho/aliyun-log-gather-write
 
 1. 使用阿里云日志配置初始化
 2. 填写日志，收集在日志实例中
-3. 集中传输日志
+3. 集中传输日志，传输将清空累积的日志
 
 注：请留意日志传输完成之后，是否还有日志需要传输？否则存在日志丢失的风险。比如后续的框架运行日志、报错日志。
 
@@ -79,6 +79,7 @@ $logger->addLogItemFields(['NewLogTestField' => 1234], true);
 推送日志
 
 ```php
+//传输操作将清空累积的日志
 $logger->push();
 
 //或者，使用静态单例推送
