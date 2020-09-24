@@ -4,6 +4,22 @@ namespace Lynncho\Aliyunlog\GatherWrite;
 
 use RuntimeException;
 
+/**
+ * Class LoggerSingle
+ * @package Lynncho\Aliyunlog\GatherWrite
+ *
+ * @method static emergency($message, array $context = array())
+ * @method static alert($message, array $context = array())
+ * @method static critical($message, array $context = array())
+ * @method static error($message, array $context = array())
+ * @method static warning($message, array $context = array())
+ * @method static notice($message, array $context = array())
+ * @method static info($message, array $context = array())
+ * @method static debug($message, array $context = array())
+ * @method static log($level, $message, array $context = array())
+ * @method static addLogItemFields(array $fields, $newLogItem = false)
+ * @method static push()
+ */
 class LoggerSingle
 {
     protected static $logger;

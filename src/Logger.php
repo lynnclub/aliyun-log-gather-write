@@ -8,11 +8,11 @@ use RuntimeException;
 class Logger extends AbstractLogger implements LoggerInterface
 {
     protected $config = [
-        'endPoint',
-        'accessId',
-        'accessKey',
-        'project',
-        'logStore',
+        'endPoint' => '',
+        'accessId' => '',
+        'accessKey' => '',
+        'project' => '',
+        'logStore' => '',
     ];
 
     protected $logItems = [];
@@ -96,6 +96,7 @@ class Logger extends AbstractLogger implements LoggerInterface
         }
 
         $putLogsRequest = new \Aliyun_Log_Models_PutLogsRequest($this->config['project'], $this->config['logStore'], null, null, $this->logItems);
+        $this->logItems = [];
 
         $client = new \Aliyun_Log_Client($this->config['endPoint'], $this->config['accessId'], $this->config['accessKey']);
         return $client->putLogs($putLogsRequest);
