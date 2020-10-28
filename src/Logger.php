@@ -52,7 +52,7 @@ class Logger extends AbstractLogger implements LoggerInterface
         $this->logItem->pushBack('Message', $message);
         $this->logItem->pushBack('Level', strtoupper($level));
         $this->logItem->pushBack('Date', date('Y-m-d H:i:s'));
-        $this->logItem->pushBack('Content', json_encode($context, JSON_UNESCAPED_UNICODE));
+        $this->logItem->pushBack('Content', json_encode($context, JSON_UNESCAPED_UNICODE + JSON_UNESCAPED_SLASHES));
 
         $this->logItems[] = $this->logItem;
 
@@ -79,6 +79,10 @@ class Logger extends AbstractLogger implements LoggerInterface
         }
 
         foreach ($fields as $key => $field) {
+            if (!is_string($field)) {
+                $field = json_encode($field, JSON_UNESCAPED_UNICODE + JSON_UNESCAPED_SLASHES);
+            }
+
             $logItem->pushBack($key, $field);
         }
     }
