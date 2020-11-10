@@ -15,6 +15,11 @@ class Logger extends AbstractLogger implements LoggerInterface
         'logStore' => '',
     ];
 
+    /**
+     * @var \Aliyun_Log_Client
+     */
+    protected $client;
+
     protected $logItems = [];
 
     protected $logItem;
@@ -32,6 +37,8 @@ class Logger extends AbstractLogger implements LoggerInterface
         if (!isset($config['endPoint'], $config['accessId'], $config['accessKey'], $config['project'], $config['logStore'])) {
             throw new RuntimeException('Aliyun log config error.');
         }
+
+        $this->client = new \Aliyun_Log_Client($this->config['endPoint'], $this->config['accessId'], $this->config['accessKey']);
 
         $this->config = $config;
         $this->customerLogger = $customerLogger;
@@ -102,8 +109,16 @@ class Logger extends AbstractLogger implements LoggerInterface
         $putLogsRequest = new \Aliyun_Log_Models_PutLogsRequest($this->config['project'], $this->config['logStore'], null, null, $this->logItems);
         $this->logItems = [];
 
-        $client = new \Aliyun_Log_Client($this->config['endPoint'], $this->config['accessId'], $this->config['accessKey']);
-        return $client->putLogs($putLogsRequest);
+        return $this->client->putLogs($putLogsRequest);
     }
 
+    /**
+     * Get log client
+     *
+     * @return \Aliyun_Log_Client
+     */
+    public function getLogClient()
+    {
+        return $this->client;
+    }
 }

@@ -19,4 +19,11 @@ interface LoggerInterface
      * @throws \Aliyun_Log_Exception
      */
     public function push();
+
+    /**
+     * Get log client
+     *
+     * @return \Aliyun_Log_Client
+     */
+    public function getLogClient();
 }
