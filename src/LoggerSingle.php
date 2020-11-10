@@ -19,7 +19,7 @@ use RuntimeException;
  * @method static log($level, $message, array $context = array())
  * @method static addLogItemFields(array $fields, $newLogItem = false)
  * @method static push()
- * @method static getLogClient()
+ * @method static \Aliyun_Log_Client getLogClient()
  */
 class LoggerSingle
 {
