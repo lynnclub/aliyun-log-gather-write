@@ -90,3 +90,12 @@ LoggerSingle::push();
 
 1. 如果存在容器，建议将`Lynncho\Aliyunlog\GatherWrite\Logger`实例放在容器中，以便实现单例效果；
 2. 如果没有容器，建议使用`Lynncho\Aliyunlog\GatherWrite\LoggerSingle`门面静态类；
+
+### 额外方法
+
+本日志包主要是日志写入方法的封装，日志读取等更多方法，请直接使用阿里云日志客户端实例。
+
+```php
+// 获取阿里云日志客户端实例
+$client = getLogClient();
+```
