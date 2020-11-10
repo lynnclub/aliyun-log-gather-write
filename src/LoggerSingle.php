@@ -19,6 +19,7 @@ use RuntimeException;
  * @method static log($level, $message, array $context = array())
  * @method static addLogItemFields(array $fields, $newLogItem = false)
  * @method static push()
+ * @method static getLogClient()
  */
 class LoggerSingle
 {
