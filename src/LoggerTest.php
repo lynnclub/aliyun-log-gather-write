@@ -15,19 +15,19 @@ $config = [
 ];
 
 $logger = new Logger($config);
-$logger->log(LogLevel::DEBUG, 'log info', ['log info' => ['test']]);
-$logger->info('info', ['info' => ['test']]);
+$logger->log(LogLevel::DEBUG, '[LoggerTest]log debug', ['log info' => ['test']]);
+$logger->info('[LoggerTest]info', ['info' => ['test']]);
 
-$logger->error('error', ['info' => ['error']]);
+$logger->error('[LoggerTest]error', ['info' => ['error']]);
 $logger->addLogItemFields(['TestField' => 123]);
 
-$logger->addLogItemFields(['NewLogTestField' => 1234], true);
+$logger->addLogItemFields(['NewLogTestField' => '[LoggerTest]1234'], true);
 
 LoggerSingle::setLogger($logger);
-LoggerSingle::info('LoggerSingle info', ['info' => ['test']]);
+LoggerSingle::info('[LoggerTest]LoggerSingle info', ['info' => ['test']]);
 
 $logger->push();
 
 LoggerSingle::init($config);
-LoggerSingle::error('LoggerSingle error', ['info' => ['test']]);
+LoggerSingle::error('[LoggerTest]LoggerSingle error', ['info' => ['test']]);
 LoggerSingle::push();

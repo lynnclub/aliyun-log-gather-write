@@ -38,10 +38,10 @@ class Logger extends AbstractLogger implements LoggerInterface
             throw new RuntimeException('Aliyun log config error.');
         }
 
-        $this->client = new \Aliyun_Log_Client($this->config['endPoint'], $this->config['accessId'], $this->config['accessKey']);
-
         $this->config = $config;
         $this->customerLogger = $customerLogger;
+
+        $this->client = new \Aliyun_Log_Client($this->config['endPoint'], $this->config['accessId'], $this->config['accessKey']);
     }
 
     /**
