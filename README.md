@@ -96,6 +96,11 @@ LoggerSingle::push();
 本日志包主要是日志写入方法的封装，日志读取等更多方法，请直接使用阿里云日志客户端实例。
 
 ```php
+// 获取阿里云日志配置
+$config = getConfig();
+```
+
+```php
 // 获取阿里云日志客户端实例
 $client = getLogClient();
 ```

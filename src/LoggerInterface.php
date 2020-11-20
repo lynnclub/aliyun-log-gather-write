@@ -21,6 +21,13 @@ interface LoggerInterface
     public function push();
 
     /**
+     * Get config
+     *
+     * @return array
+     */
+    public function getConfig();
+
+    /**
      * Get log client
      *
      * @return \Aliyun_Log_Client

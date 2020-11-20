@@ -20,6 +20,7 @@ use RuntimeException;
  * @method static addLogItemFields(array $fields, $newLogItem = false)
  * @method static push()
  * @method static \Aliyun_Log_Client getLogClient()
+ * @method static array getConfig()
  */
 class LoggerSingle
 {

@@ -113,6 +113,16 @@ class Logger extends AbstractLogger implements LoggerInterface
     }
 
     /**
+     * Get config
+     *
+     * @return array
+     */
+    public function getConfig()
+    {
+        return $this->config;
+    }
+
+    /**
      * Get log client
      *
      * @return \Aliyun_Log_Client
